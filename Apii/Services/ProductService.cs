@@ -2,7 +2,7 @@
 using Entities.Entities;
 using Logic.ILogic;
 
-namespace APIService.Services
+namespace Apii.Services
 {
     public class ProductService : IProductService
     {
@@ -16,5 +16,6 @@ namespace APIService.Services
             _productLogic.InsertProductItem(productItem);
             return productItem.Id;
         }
+
     }
 }

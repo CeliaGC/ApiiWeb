@@ -16,6 +16,7 @@ namespace Data
         public ServiceContext(DbContextOptions<ServiceContext> options) : base(options) { }
         public DbSet<ProductItem> Products { get; set; }
         public DbSet<UserItem> Users { get; set; }
+        public DbSet<UserRol> RolType { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ProductItem>(entity => {
@@ -23,7 +24,12 @@ namespace Data
             });
             builder.Entity<UserItem>(entity => {
                 entity.ToTable("Users");
+                //entity.HasOne<UserRol>().WithMany().HasForeignKey(rol => rol.Id);
             });
+            //builder.Entity<UserRol>(entity => {
+            //    entity.ToTable("UserRol");
+            //});
+
         }
     }
     public class ServiceContextFactory : IDesignTimeDbContextFactory<ServiceContext>

@@ -1,5 +1,5 @@
 using Apii.IServices;
-using APIService.Services;
+using Apii.Services;
 using Data;
 using Logic.ILogic;
 using Logic.Logic;
@@ -15,7 +15,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductLogic, ProductLogic>();
+builder.Services.AddScoped<IUserLogic, UserLogic>();
+//builder.Services.AddScoped<IRolLogic, RolLogic>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddScoped<IRolService, RolService>();
+
+
 
 builder.Services.AddDbContext<ServiceContext>(
         options => options.UseSqlServer("name=ConnectionStrings:ServiceContext"));

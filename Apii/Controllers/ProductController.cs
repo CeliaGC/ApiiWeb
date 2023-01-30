@@ -2,7 +2,7 @@
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIService.Controllers
+namespace Apii.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -21,5 +21,6 @@ namespace APIService.Controllers
         {
             return _productService.InsertProduct(productItem);
         }
+
     }
 }

@@ -22,8 +22,7 @@ namespace Data.Migrations
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IdRol = table.Column<int>(type: "int", nullable: false),
-                    ExampleGitSasasa = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IdRol = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
