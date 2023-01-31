@@ -26,9 +26,10 @@ namespace Data
                 entity.ToTable("Users");
                 //entity.HasOne<UserRol>().WithMany().HasForeignKey(rol => rol.Id);
             });
-            //builder.Entity<UserRol>(entity => {
-            //    entity.ToTable("UserRol");
-            //});
+            builder.Entity<UserRol>(entity =>
+            {
+                entity.ToTable("RolType");
+            });
 
         }
     }

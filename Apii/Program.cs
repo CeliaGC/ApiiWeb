@@ -14,12 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddScoped<IProductLogic, ProductLogic>();
+builder.Services.AddScoped<IRolLogic, RolLogic>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
-//builder.Services.AddScoped<IRolLogic, RolLogic>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IUserService, UserService>();
-//builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<IRolService, RolService>();
 
 
 
