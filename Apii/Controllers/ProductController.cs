@@ -1,5 +1,6 @@
 ﻿using Apii.IServices;
 using Apii.Services;
+using Data;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -15,12 +16,15 @@ namespace Apii.Controllers
         private readonly ISecurityService _securityService;
         private readonly IProductService _productService;
         private readonly IUserService _userService;
+        private readonly ServiceContext _serviceContext;
    
-        public ProductController(ISecurityService securityService, IProductService productService, IUserService userService)
+        public ProductController(ISecurityService securityService, IProductService productService, IUserService userService, ServiceContext serviceContext)
         {
             _productService = productService;
             _securityService = securityService;
             _userService = userService;
+            _serviceContext = serviceContext;
+    
         }
 
         [HttpPost(Name = "InsertProduct")]
@@ -32,7 +36,8 @@ namespace Apii.Controllers
         [HttpDelete(Name = "DeleteProduct")]
         public void Delete([FromQuery] string userName, [FromQuery] string userPassword, [FromQuery] int IdRol, [FromQuery] int Id)
         {
-            var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1, Id);
+            var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
+            
             if (validCredentials == true)
             {
                 _productService.DeleteProduct(Id);

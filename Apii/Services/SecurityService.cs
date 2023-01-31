@@ -12,9 +12,9 @@ namespace Apii.Services
         {
             _securityLogic= securityLogic;
         }
-        public bool ValidateUserCredentials(string userName, string userPassWord, int IdRol, int Id)
+        public bool ValidateUserCredentials(string userName, string userPassWord, int IdRol)
         {
-           return _securityLogic.ValidateUserCredentials(userName, userPassWord, IdRol, Id) ;
+           return _securityLogic.ValidateUserCredentials(userName, userPassWord, IdRol) ;
         }
     }
 }

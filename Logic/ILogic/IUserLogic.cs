@@ -10,5 +10,6 @@ namespace Logic.ILogic
     public interface IUserLogic
     {
         void InsertUserItem(UserItem userItem);
+        void DeleteUser(int Id);
     }
 }

@@ -17,5 +17,13 @@ namespace Logic.Logic
             _serviceContext.Users.Add(userItem);
             _serviceContext.SaveChanges();
         }
+
+        void IUserLogic.DeleteUser(int Id)
+        {
+            {
+                _serviceContext.Users.Remove(_serviceContext.Set<UserItem>().Where(user => user.Id == Id).First());
+                _serviceContext.SaveChanges();
+            }
+        }
     }
 }

@@ -15,19 +15,14 @@ namespace Logic.ILogic
         {
             _serviceContext = serviceContext;
         }
-        public bool ValidateUserCredentials(string userName, string userPassWord, int idRol, int Id)
+        public bool ValidateUserCredentials(string userName, string userPassWord, int idRol)
         {
             var selectedUser = _serviceContext.Set<UserItem>()
                                 .Where(u => u.UserName == userName
                                     && u.Password == userPassWord
-                                    && u.IdRol == idRol).FirstOrDefault();
-            var selectedProduct=_serviceContext.Set<ProductItem>()
-                                .Where(p => p.Id == Id).FirstOrDefault();
-                                
-                                  
-                                    
+                                    && u.IdRol == idRol).FirstOrDefault();                   
 
-            if (selectedUser != null && selectedProduct != null)
+            if (selectedUser != null)
             {
                 return true;
             }

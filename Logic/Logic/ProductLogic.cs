@@ -14,17 +14,11 @@ namespace Logic.Logic
     {
         public ProductLogic(ServiceContext serviceContext) : base(serviceContext) { }
 
-        void IProductLogic.DeleteProduct(int id)
+        void IProductLogic.DeleteProduct(int Id)
             {
-            _serviceContext.Products.Remove(_serviceContext.Set<ProductItem>().Where(product => product.Id == id).First());
+            _serviceContext.Products.Remove(_serviceContext.Set<ProductItem>().Where(p => p.Id == Id).FirstOrDefault());
             _serviceContext.SaveChanges();
             }
-
-        //void IUserLogic.DeleteUser(int id)
-        //{
-        //    //var userToDelete = _serviceContext.Set<UserEntity>().Where(u => u.Id == id).First();
-        //    _serviceContext.Users.Remove(_serviceContext.Set<UserEntity>().Where(u => u.Id == id).First());
-        //    _serviceContext.SaveChanges();
 
             public int InsertProductItem(ProductItem productItem)
             {
@@ -32,6 +26,7 @@ namespace Logic.Logic
             _serviceContext.SaveChanges();
             return productItem.Id;
             }
+          
 
     }
 

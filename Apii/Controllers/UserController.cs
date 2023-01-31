@@ -1,7 +1,9 @@
 ﻿
 using Apii.IServices;
+using Apii.Services;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Authentication;
 
 namespace Apii.Controllers
 {
@@ -9,11 +11,11 @@ namespace Apii.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly ILogger<ProductController> _logger;
+        private readonly ISecurityService _securityService;
         private readonly IUserService _userService;
-        public UserController(ILogger<ProductController> logger, IUserService userService)
+        public UserController(ISecurityService securityService, IUserService userService)
         {
-            _logger = logger;
+            _securityService= securityService;
             _userService = userService;
         }
 
@@ -21,6 +23,20 @@ namespace Apii.Controllers
         public int Post([FromBody] UserItem userItem)
         {
             return _userService.InsertUser(userItem);
+        }
+
+        [HttpDelete(Name = "DeleteUser")]
+        public void Delete([FromQuery] string userName, [FromQuery] string userPassword, [FromQuery] int IdRol, [FromQuery] int Id)
+        {
+            var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
+            if (validCredentials == true)
+            {
+                _userService.DeleteUser(Id);
+            }
+            else
+            {
+                throw new InvalidCredentialException();
+            }
         }
     }
 }

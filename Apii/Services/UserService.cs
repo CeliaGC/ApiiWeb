@@ -1,5 +1,6 @@
 ﻿
 using Apii.IServices;
+using Data;
 using Entities.Entities;
 using Logic.ILogic;
 
@@ -17,5 +18,12 @@ namespace Apii.Services
             _userLogic.InsertUserItem(userItem);
             return userItem.Id;
         }
+
+        public void DeleteUser(int Id)
+        {
+            _userLogic.DeleteUser(Id);
+         
+        }
+      
     }
 }
