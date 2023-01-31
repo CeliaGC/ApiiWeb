@@ -2,6 +2,7 @@
 using Apii.IServices;
 using Entities.Entities;
 using Logic.ILogic;
+using Logic.Logic;
 
 namespace Apii.Services
 {
@@ -16,6 +17,11 @@ namespace Apii.Services
         {
             _rolLogic.InsertUserRol(userRol);
             return userRol.IdRol;
+        }
+
+        public void DeleteRol(int Id)
+        {
+            _rolLogic.DeleteRol(Id);
         }
     }
 }

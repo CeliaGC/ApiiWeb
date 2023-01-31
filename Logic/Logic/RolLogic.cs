@@ -17,6 +17,14 @@ namespace Logic.Logic
             _serviceContext.Add(userRol);
             _serviceContext.SaveChanges();
         }
+
+        void IRolLogic.DeleteRol(int Id)
+        {
+            {
+                _serviceContext.RolType.Remove(_serviceContext.Set<UserRol>().Where(r => r.IdRol == Id).FirstOrDefault());
+                _serviceContext.SaveChanges();
+            }
+        }
     }
 }
 

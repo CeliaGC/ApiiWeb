@@ -1,6 +1,8 @@
 ﻿using Apii.IServices;
+using Apii.Services;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Authentication;
 
 namespace Apii.Controllers
 {
@@ -8,11 +10,11 @@ namespace Apii.Controllers
     [Route("[controller]")]
     public class RolController : ControllerBase
     {
-        private readonly ILogger<RolController> _logger;
+        private readonly ISecurityService _securityService;
         private readonly IRolService _rolService;
-        public RolController(ILogger<RolController> logger, IRolService rolService)
+        public RolController(ISecurityService securityService, IRolService rolService)
         {
-            _logger = logger;
+           _securityService= securityService;
             _rolService = rolService;
         }
 
@@ -20,6 +22,21 @@ namespace Apii.Controllers
         public int Post([FromBody] UserRol userRol)
         {
             return _rolService.InsertUserRol(userRol);
+        }
+
+        [HttpDelete(Name = "DeleteRol")]
+        public void Delete([FromQuery] string userName, [FromQuery] string userPassword, [FromQuery] int idRol, [FromQuery] int Id)
+        {
+            var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
+
+            if (validCredentials == true)
+            {
+                _rolService.DeleteRol(Id);
+            }
+            else
+            {
+                throw new InvalidCredentialException();
+            }
         }
     }
 }

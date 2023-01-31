@@ -10,5 +10,8 @@ namespace Logic.ILogic
     public interface IRolLogic
     {
         void InsertUserRol(UserRol userRol);
+        void DeleteRol(int Id);
     }
+
+        
 }
