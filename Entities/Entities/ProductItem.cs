@@ -16,9 +16,8 @@ namespace Entities.Entities
         }
         public int Id { get; set; }
         public Guid IdWeb { get; set; }
-        public UserItem OwnerUser { get; set; }
         public DateTime InsertDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
         public bool IsActive { get; private set; }
         public bool IsPublic { get; private set; }
         public decimal RawPrice { get; set; }

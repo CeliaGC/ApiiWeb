@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -11,7 +12,8 @@ namespace Entities.Entities
 {
     public class UserRol
     {
-        public int Id { get; set; }
+        [Key]
+        public int IdRol { get; set; }
         public string NameRol { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }

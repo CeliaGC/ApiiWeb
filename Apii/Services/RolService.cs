@@ -15,7 +15,7 @@ namespace Apii.Services
         public int InsertUserRol(UserRol userRol)
         {
             _rolLogic.InsertUserRol(userRol);
-            return userRol.Id;
+            return userRol.IdRol;
         }
     }
 }

@@ -5,5 +5,9 @@ namespace Apii.IServices
     public interface IProductService
     {
         int InsertProduct(ProductItem productItem);
+
+        void DeleteProduct(int Id);
     }
+
+    
 }

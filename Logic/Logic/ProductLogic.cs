@@ -14,11 +14,24 @@ namespace Logic.Logic
     {
         public ProductLogic(ServiceContext serviceContext) : base(serviceContext) { }
 
-        public void InsertProductItem(ProductItem productItem)
-        {
+        void IProductLogic.DeleteProduct(int id)
+            {
+            _serviceContext.Products.Remove(_serviceContext.Set<ProductItem>().Where(product => product.Id == id).First());
+            _serviceContext.SaveChanges();
+            }
+
+        //void IUserLogic.DeleteUser(int id)
+        //{
+        //    //var userToDelete = _serviceContext.Set<UserEntity>().Where(u => u.Id == id).First();
+        //    _serviceContext.Users.Remove(_serviceContext.Set<UserEntity>().Where(u => u.Id == id).First());
+        //    _serviceContext.SaveChanges();
+
+            public int InsertProductItem(ProductItem productItem)
+            {
             _serviceContext.Products.Add(productItem);
             _serviceContext.SaveChanges();
-        }
+            return productItem.Id;
+            }
 
     }
 

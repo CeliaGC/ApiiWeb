@@ -17,5 +17,10 @@ namespace Apii.Services
             return productItem.Id;
         }
 
+        public void DeleteProduct(int Id)
+        {
+            _productLogic.DeleteProduct(Id);
+        }
+
     }
 }

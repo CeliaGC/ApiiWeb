@@ -23,8 +23,8 @@ namespace Entities.Entities
         public DateTime UpdateDate { get; set; }
         public bool IsActive { get; private set; }
         public int IdRol { get; set; }
-        private string Password { get; set; }
-        private string EncryptedPassword { get; set; }
+        public string Password { get; set; }
+        public string EncryptedPassword { get; set; }
 
 
     }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class UserOkRemoveFK : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,6 +42,12 @@ namespace Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_RolType_IdRol",
+                        column: x => x.IdRol,
+                        principalTable: "RolType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,6 +79,11 @@ namespace Data.Migrations
                 name: "IX_Products_OwnerUserId",
                 table: "Products",
                 column: "OwnerUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_IdRol",
+                table: "Users",
+                column: "IdRol");
         }
 
         /// <inheritdoc />
@@ -82,10 +93,10 @@ namespace Data.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "RolType");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "RolType");
         }
     }
 }
