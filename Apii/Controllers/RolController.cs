@@ -7,7 +7,7 @@ using System.Security.Authentication;
 namespace Apii.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class RolController : ControllerBase
     {
         private readonly ISecurityService _securityService;
@@ -19,13 +19,23 @@ namespace Apii.Controllers
         }
 
         [HttpPost(Name = "InsertRol")]
-        public int Post([FromBody] UserRol userRol)
+        public int Post([FromQuery] string userName, [FromQuery] string userPassword, [FromBody] UserRol userRol)
         {
-            return _rolService.InsertUserRol(userRol);
+            var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
+
+            if (validCredentials == true) 
+            {
+                return _rolService.InsertUserRol(userRol);
+            }
+            else
+            {
+                throw new InvalidCredentialException();
+            }
+
         }
 
         [HttpDelete(Name = "DeleteRol")]
-        public void Delete([FromQuery] string userName, [FromQuery] string userPassword, [FromQuery] int idRol, [FromQuery] int Id)
+        public void Delete([FromQuery] string userName, [FromQuery] string userPassword, [FromQuery] int Id)
         {
             var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
 
@@ -38,5 +48,37 @@ namespace Apii.Controllers
                 throw new InvalidCredentialException();
             }
         }
+
+        [HttpPatch(Name = "ModifyRol")]
+        public void Patch([FromQuery] string userName,
+                  [FromQuery] string userPassword,
+                  [FromBody] UserRol userRol)
+
+        {
+            var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
+            if (validCredentials == true)
+            {
+                _rolService.UpdateRol(userRol);
+            }
+            else
+            {
+                throw new InvalidCredentialException();
+            }
+        }
+
+        [HttpGet(Name = "GetRolByCriteria")]
+        public List<UserRol> GetRolByCriteria([FromQuery] int IdRol)
+        {
+
+            return _rolService.GetRolByCriteria(IdRol);
+        }
+
+        [HttpGet(Name = "GetAllRol")]
+        public List<UserRol> GetAll()
+        {
+
+            return _rolService.GetAll();
+        }
+
     }
 }

@@ -22,5 +22,20 @@ namespace Apii.Services
             _productLogic.DeleteProduct(Id);
         }
 
+        public void UpdateProduct(ProductItem productItem) 
+        {
+            _productLogic.UpdateProduct(productItem);
+        }
+
+
+        List<ProductItem> IProductService.GetProductByCriteria(string ProductBrand)
+        {
+            return _productLogic.GetProductByCriteria(ProductBrand);
+        }
+
+        List<ProductItem> IProductService.GetAll()
+        {
+            return _productLogic.GetAll();
+        }
     }
 }

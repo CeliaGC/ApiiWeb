@@ -15,11 +15,14 @@ namespace Entities.Entities
             IsPublic = true;
         }
         public int Id { get; set; }
+        public string ProductName { get; set; }
+        public string ProductBrand { get; set; }
         public Guid IdWeb { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public bool IsActive { get; private set; }
         public bool IsPublic { get; private set; }
         public decimal RawPrice { get; set; }
+        
     }
 }

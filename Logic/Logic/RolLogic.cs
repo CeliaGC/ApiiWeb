@@ -25,6 +25,35 @@ namespace Logic.Logic
                 _serviceContext.SaveChanges();
             }
         }
+
+        public void UpdateRol(UserRol userRol)
+        {
+            _serviceContext.RolType.Update(userRol);
+            _serviceContext.SaveChanges();
+        }
+
+        public List<UserRol> GetRolByCriteria(int IdRol)
+        {
+            var listuser = new UserRol();
+            listuser.IdRol = IdRol;
+
+            var resultList = _serviceContext.Set<UserRol>()
+                                .Where(u => u.IdRol == IdRol);
+
+            if (listuser.IdRol == IdRol)
+            {
+                resultList = resultList.Where(u => u.IdRol == IdRol);
+            }
+
+
+            return resultList.ToList();
+        }
+
+        List<UserRol> IRolLogic.GetAll()
+        {
+            var allProducts = _serviceContext.Set<UserRol>().ToList();
+            return allProducts;
+        }
     }
 }
 

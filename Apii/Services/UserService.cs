@@ -24,6 +24,21 @@ namespace Apii.Services
             _userLogic.DeleteUser(Id);
          
         }
-      
+
+        void IUserService.UpdateUser(UserItem userItem)
+        {
+            _userLogic.UpdateUser(userItem);
+        }
+
+        List<UserItem> IUserService.GetUserByCriteria(int Id)
+        {
+            return _userLogic.GetUserByCriteria(Id);
+            
+        }
+
+        List<UserItem> IUserService.GetAll()
+        {
+            return _userLogic.GetAll();
+        }
     }
 }

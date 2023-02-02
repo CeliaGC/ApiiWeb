@@ -23,5 +23,21 @@ namespace Apii.Services
         {
             _rolLogic.DeleteRol(Id);
         }
+
+        public void UpdateRol(UserRol userRol)
+        {
+            _rolLogic.UpdateRol(userRol);
+        }
+
+
+        List<UserRol> IRolService.GetRolByCriteria(int IdRol)
+        {
+            return _rolLogic.GetRolByCriteria(IdRol);
+        }
+
+        List<UserRol> IRolService.GetAll()
+        {
+            return _rolLogic.GetAll();
+        }
     }
 }

@@ -11,5 +11,9 @@ namespace Logic.ILogic
     {
         void InsertUserItem(UserItem userItem);
         void DeleteUser(int Id);
+        void UpdateUser(UserItem userItem);
+
+        List<UserItem> GetUserByCriteria(int Id);
+        List<UserItem> GetAll();
     }
 }
