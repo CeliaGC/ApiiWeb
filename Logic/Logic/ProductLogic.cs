@@ -23,7 +23,7 @@ namespace Logic.Logic
             }
 
         public int InsertProductItem(ProductItem productItem)
-            {
+        {
             _serviceContext.Products.Add(productItem);
             _serviceContext.SaveChanges();
             return productItem.Id;

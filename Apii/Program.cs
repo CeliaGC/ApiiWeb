@@ -23,6 +23,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRolService, RolService>();
 builder.Services.AddScoped<ISecurityService, SecurityService>();
 builder.Services.AddScoped<ISecurityLogic, SecurityLogic>();
+builder.Services.AddScoped<IOrderLogic, OrderLogic>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 
 
