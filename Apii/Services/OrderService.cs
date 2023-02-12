@@ -1,5 +1,6 @@
 ﻿using Apii.IServices;
 using Entities.Entities;
+using Entities.OrderRequest;
 using Logic.ILogic;
 
 namespace Apii.Services
@@ -31,10 +32,11 @@ namespace Apii.Services
             return _orderLogic.GetOrderByUser(IdUser);
         }
 
-        public int InsertOrder(OrderItem orderItem)
+        public int InsertOrder(newOrderRequest newOrderRequest)
         {
-            _orderLogic.InsertOrder(orderItem);
-            return orderItem.Id;
+            var newOrderItem = newOrderRequest.ToOrderItem();
+            return _orderLogic.InsertOrder(newOrderItem);
+            
         }
 
         public void UpdateOrder(OrderItem orderItem)

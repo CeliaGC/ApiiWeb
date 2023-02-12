@@ -1,10 +1,11 @@
 ﻿using Entities.Entities;
+using Entities.OrderRequest;
 
 namespace Apii.IServices
 {
     public interface IOrderService
     {
-        int InsertOrder(OrderItem orderItem);
+        int InsertOrder(newOrderRequest newOrderRequest);
         void UpdateOrder(OrderItem orderItem);
         void DeleteOrder(int id);
         List<OrderItem> GetAllOrders();

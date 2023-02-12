@@ -3,6 +3,7 @@ using Apii.Services;
 using Data;
 using Entities;
 using Entities.Entities;
+using Entities.OrderRequest;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using System.Collections.Specialized;
@@ -31,9 +32,9 @@ namespace Apii.Controllers
         }
 
         [HttpPost(Name = "InsertOrder")]
-        public int Post([FromQuery] OrderItem orderItem)
+        public int Post([FromQuery] newOrderRequest newOrderRequest)
         {
-            return _orderService.InsertOrder(orderItem);
+            return _orderService.InsertOrder(newOrderRequest);
         }
 
         [HttpDelete(Name = "DeleteOrder")]

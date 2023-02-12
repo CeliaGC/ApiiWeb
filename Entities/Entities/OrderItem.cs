@@ -19,13 +19,17 @@ namespace Entities.Entities
 
         public int IdProduct { get; set; }
         public decimal Price { get; set; }
-
         public int Amount { get; set; }
+        public decimal Discount { get; set; }
+        public decimal FinalPrice { get; set; }
+
         public DateTime DeliveryDate { get; set; }
         public bool Delivered { get; set; }
         public bool Paid { get; set; }
         public bool IsActive { get; set; }
 
+       
     }
 
 }
+
