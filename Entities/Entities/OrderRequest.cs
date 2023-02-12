@@ -40,16 +40,14 @@ namespace Entities.OrderRequest
             newOrderItem.Amount = Amount;
             newOrderItem.Price = Price;
 
-            //pedidoItem.Descuento = 0.2M * (Cantidad * Precio);
-
-            if (newOrderItem.IdRol == 7)
+            if (newOrderItem.IdRol == 2)
             {
                 newOrderItem.Discount = 0.1M * (Amount * Price);
             }
-            //else if (newOrderItem.IdRol == 2)
-            //{
-            //    newOrderItem.Descuento = 0.15M * (Cantidad * Precio);
-            //}
+            else if (newOrderItem.IdRol == 3)
+            {
+                newOrderItem.Discount = 0.15M * (Amount * Price);
+            }
             //else if (newOrderItem.IdTipoCliente == 3)
             //{
             //    newOrderItem.Discount = 0.2M * (Cantidad * Precio);
@@ -59,14 +57,14 @@ namespace Entities.OrderRequest
                 newOrderItem.Discount = 0;
             }
 
-            if (newOrderItem.IdRol == 7)
+            if (newOrderItem.IdRol == 2)
             {
                 newOrderItem.FinalPrice = 0.9M * (Amount * Price);
             }
-            //else if (pedidoItem.IdTipoCliente == 2)
-            //{
-            //    pedidoItem.ImporteTotal = 0.85M * (Cantidad * Precio);
-            //}
+            else if (newOrderItem.IdRol == 3)
+            {
+                newOrderItem.FinalPrice = 0.85M * (Amount * Price);
+            }
             //else if (pedidoItem.IdTipoCliente == 3)
             //{
             //    pedidoItem.ImporteTotal = 0.8M * (Cantidad * Precio);

@@ -19,7 +19,7 @@ namespace Data
         public DbSet<UserItem> Users { get; set; }
         public DbSet<UserRol> RolType { get; set; }
         public DbSet<OrderItem> Orders { get; set; }
-        public DbSet<newOrderRequest> OrderRequests { get; set; }
+        //public DbSet<newOrderRequest> OrderRequests { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ProductItem>(entity => {
