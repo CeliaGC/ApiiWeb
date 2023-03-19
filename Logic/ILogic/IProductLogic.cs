@@ -19,3 +19,4 @@ namespace Logic.ILogic
         List<ProductItem> GetAll();
     }
 }
+

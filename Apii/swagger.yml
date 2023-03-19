@@ -1,0 +1,5 @@
+﻿
+Image:
+  type: "binary"
+  description: "Imagen en formato binario"
+  format: "byte"

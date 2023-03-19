@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,10 +10,13 @@ namespace Entities.Entities
 {
     public class ProductItem
     {
+      
         public ProductItem()
         {
             IsActive = true;
             IsPublic = true;
+
+
         }
         public int Id { get; set; }
         public string ProductName { get; set; }
@@ -23,6 +27,9 @@ namespace Entities.Entities
         public bool IsActive { get; private set; }
         public bool IsPublic { get; private set; }
         public decimal RawPrice { get; set; }
+       
         
     }
+
+   
 }

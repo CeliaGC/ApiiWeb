@@ -3,7 +3,12 @@ using Apii.Services;
 using Data;
 using Logic.ILogic;
 using Logic.Logic;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,10 +33,27 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 
 
 
+
+
 builder.Services.AddDbContext<ServiceContext>(
         options => options.UseSqlServer("name=ConnectionStrings:ServiceContext"));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
+
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -40,6 +62,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
 }
+
+//app.UseMiddleware<CorsMiddleware>();
+
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

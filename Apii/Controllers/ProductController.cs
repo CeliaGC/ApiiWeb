@@ -3,15 +3,17 @@ using Apii.Services;
 using Data;
 using Entities;
 using Entities.Entities;
+//using Microsoft.AspNetCore.Cors;
+//using Microsoft.AspNetCore.Http.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using System.Collections.Specialized;
 using System.Security.Authentication;
+using System.Web.Http.Cors;
 
 namespace Apii.Controllers
 {
-    [ApiController]
-  
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [Route("[controller]/[action]")]
     public class ProductController : ControllerBase
     {
@@ -30,7 +32,7 @@ namespace Apii.Controllers
         }
 
         [HttpPost(Name = "InsertProduct")]
-        public int Post([FromQuery] string userName, [FromQuery] string userPassword, [FromBody] ProductItem productItem)
+        public int Post([FromQuery] string userName, [FromQuery] string userPassword, [FromBody] ProductItem productItem, [FromForm] IFormFile Image)
         {
             var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
 
@@ -78,7 +80,7 @@ namespace Apii.Controllers
         }
 
         [HttpGet(Name = "GetProductsByCriteria")]
-        public List<ProductItem> GetProductByCriteria([FromQuery]string ProductBrand)
+        public List<ProductItem> GetProductByCriteria([FromQuery] string ProductBrand)
         {
 
             return _productService.GetProductByCriteria(ProductBrand);
@@ -90,6 +92,6 @@ namespace Apii.Controllers
 
             return _productService.GetAll();
         }
-
     }
 }
+

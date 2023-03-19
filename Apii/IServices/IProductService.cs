@@ -12,6 +12,7 @@ namespace Apii.IServices
 
         List<ProductItem> GetProductByCriteria(string ProductBrand);
         List<ProductItem> GetAll();
+        
     }
 
     
