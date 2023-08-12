@@ -38,6 +38,7 @@ namespace Data
                 entity.ToTable("Orders");
                 entity.HasOne<UserRol>().WithMany().HasForeignKey(o => o.IdRol);
                 entity.HasOne<ProductItem>().WithMany().HasForeignKey(o => o.IdProduct);
+                
             });
 
         }

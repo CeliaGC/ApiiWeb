@@ -3,6 +3,7 @@
 INSERT INTO Users
 (IdWeb, [UserName], InsertDate, UpdateDate, IsActive, IdRol, Password, EncryptedPassword)
 VALUES
+(NEWID(), 'Celia', GETDATE(), GETDATE(), 1, 1, '123', '123abc'),
 (NEWID(), 'Isabel', GETDATE(), GETDATE(), 1, 2, '456', '456def')
 
 SELECT * FROM Users
@@ -10,6 +11,7 @@ SELECT * FROM Users
 INSERT INTO RolType
 ([NameRol], [Description], IsActive)
 VALUES
+('Admin', 'Administra todo', 1),
 ('Mayorista', 'Precio1', 1)
 
 SELECT * FROM RolType
