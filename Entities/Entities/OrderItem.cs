@@ -11,6 +11,16 @@ namespace Entities.Entities
 {
     public class OrderItem
     {
+        public OrderItem() 
+        {
+            IdWeb = new Guid();
+            DateOrder= DateTime.Now;
+            Delivered = false;
+            Paid= false;
+            IsActive= false;
+            DeliveryDate= DateTime.Now.AddDays(7);
+        }
+
         public int Id { get; set; }
         public Guid IdWeb { get; set; }
         public DateTime DateOrder { get; set; }
